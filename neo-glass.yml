@@ -1,0 +1,275 @@
+id: "@hsync/neo-glass"
+
+metadata:
+  displayName: "Neo Glass"
+  description: >-
+    Dock ve araç çubuğu için neo-minimalist glassmorphism teması. "(Neredeyse) Sıvı Cam
+    DockBar" (dock panelinde sıvı-cam/blur/parıltı dili) ile "Onyx Bubbles Light & Dark
+    (Adaptive)" (araç çubuğunda yumuşak, aydınlık/karanlığa uyumlu bubble öğeler) temalarından
+    ilham alınarak sıfırdan yazıldı. Seelen UI v2.7.x'in güncel --slu-std-* tasarım
+    token'larını kullanır; bu sayede Windows vurgu renginize ve açık/koyu moda otomatik uyum
+    sağlar.
+  tags:
+    - dock
+    - toolbar
+    - glassmorphism
+    - minimal
+    - adaptive
+    - blur
+
+settings:
+  - syntax: <length>
+    name: --neo-glass-blur
+    label: "Cam bulanıklığı"
+    description: "Dock, araç çubuğu ve tüm popup panellerinin arka plan bulanıklık miktarı."
+    initialValue: 22
+    initialValueUnit: px
+
+  - syntax: <number>
+    name: --neo-glass-opacity
+    label: "Cam opaklığı (%)"
+    description: "Panel arka planının saydamlık seviyesi."
+    initialValue: 55
+    min: 20
+    max: 95
+    step: 1
+
+  - syntax: <number>
+    name: --neo-glass-radius
+    label: "Köşe yuvarlaklığı (px)"
+    initialValue: 20
+    min: 8
+    max: 32
+    step: 1
+
+  - syntax: <number>
+    name: --neo-glass-border-opacity
+    label: "Kenar çizgisi belirginliği (%)"
+    initialValue: 16
+    min: 0
+    max: 60
+    step: 1
+
+  - syntax: <length>
+    name: --neo-glass-popover-blur
+    label: "Panel (yazılı alan) bulanıklığı"
+    description: "Popup/flyout panellerindeki arka plan bulanıklık miktarı."
+    initialValue: 46
+    initialValueUnit: px
+
+  - syntax: <number>
+    name: --neo-glass-popover-opacity
+    label: "Panel (yazılı alan) opaklığı (%)"
+    description: "Okunurluk her şeyden önce gelir — yüksek tutulur."
+    initialValue: 90
+    min: 40
+    max: 98
+    step: 1
+
+styles:
+  "@seelen/weg": |
+    :root {
+      --neo-glow: oklch(from var(--system-accent-color) l c h / 0.18);
+      --neo-glow-ring: oklch(from var(--system-accent-color) l c h / 0.35);
+    }
+
+    .taskbar {
+      background-color: oklch(from var(--slu-std-bg-color) l c h / calc(var(--neo-glass-opacity, 55) / 100));
+      backdrop-filter: blur(var(--neo-glass-blur, 22px)) saturate(1.6);
+      -webkit-backdrop-filter: blur(var(--neo-glass-blur, 22px)) saturate(1.6);
+      border: 1px solid oklch(from var(--slu-std-fg-color) l c h / calc(var(--neo-glass-border-opacity, 16) / 100));
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .taskbar[data-has-margin="true"],
+    .taskbar[data-size="min-content"] {
+      border-radius: calc(var(--neo-glass-radius, 20) * 1px);
+    }
+
+    .taskbar .weg-items-container {
+      border-radius: calc(var(--neo-glass-radius, 20) * 1px);
+    }
+
+    .weg-item {
+      background-color: oklch(from var(--slu-std-bg-light-color) l c h / 0.55);
+      border: 1px solid oklch(from var(--slu-std-fg-color) l c h / 0.08);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+      transition: background-color 0.25s ease, box-shadow 0.25s ease, transform 0.15s ease;
+    }
+
+    .weg-item:hover {
+      background-color: var(--neo-glow);
+      box-shadow: 0 0 0 1px var(--neo-glow-ring), 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .weg-item:active {
+      background-color: var(--neo-glow-ring);
+    }
+
+    .weg-item-open-sign-focused {
+      box-shadow: 0 0 6px 1px var(--system-accent-color);
+    }
+
+    .weg-item-notification-badge {
+      box-shadow: 0 0 0 2px oklch(from var(--slu-std-bg-color) l c h / 0.8);
+    }
+
+    .weg-item-preview-container {
+      background-color: rgba(20, 20, 20, 0.9);
+      background-color: oklch(from var(--slu-std-bg-color) l c h / calc(var(--neo-glass-popover-opacity, 90) / 100));
+      background-image: linear-gradient(135deg, oklch(from var(--slu-std-fg-color) l c h / 0.10) 0%, transparent 40%);
+      backdrop-filter: blur(var(--neo-glass-popover-blur, 46px)) saturate(2.4);
+      -webkit-backdrop-filter: blur(var(--neo-glass-popover-blur, 46px)) saturate(2.4);
+      border: 1px solid oklch(from var(--slu-std-fg-color) l c h / calc(var(--neo-glass-border-opacity, 16) / 100));
+      border-radius: calc(var(--neo-glass-radius, 20) * 1px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), inset 0 1px 0 oklch(from var(--slu-std-fg-color) l c h / 0.12);
+    }
+
+    .weg-item-preview-topbar {
+      padding: 3px 6px;
+      margin: -3px -6px 8px -6px;
+      border-radius: 6px;
+      background-color: rgba(0, 0, 0, 0.35);
+      width: fit-content;
+    }
+
+    .weg-item-preview {
+      background-color: oklch(from var(--slu-std-bg-light-color) l c h / 0.6);
+      border: 1px solid oklch(from var(--slu-std-fg-color) l c h / 0.08);
+    }
+
+  "@seelen/fancy-toolbar": |
+    :root {
+      --neo-glow: oklch(from var(--system-accent-color) l c h / 0.18);
+      --neo-glow-ring: oklch(from var(--system-accent-color) l c h / 0.32);
+    }
+
+    .ft-bar {
+      background-color: transparent !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      border: none !important;
+      box-shadow: none !important;
+      gap: 8px;
+    }
+
+    .ft-bar-container {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      padding: 4px 8px;
+      margin: 6px 0;
+
+      background-color: oklch(from var(--slu-std-bg-color) l c h / calc(var(--neo-glass-opacity, 55) / 100));
+      backdrop-filter: blur(var(--neo-glass-blur, 22px)) saturate(1.6);
+      -webkit-backdrop-filter: blur(var(--neo-glass-blur, 22px)) saturate(1.6);
+      border: 1px solid oklch(from var(--slu-std-fg-color) l c h / calc(var(--neo-glass-border-opacity, 16) / 100));
+      border-radius: calc(var(--neo-glass-radius, 20) * 1px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .ft-bar-container:empty {
+      display: none;
+    }
+
+    .ft-bar-left {
+      margin-left: 6px;
+    }
+
+    .ft-bar-right {
+      margin-right: 6px;
+    }
+
+    .ft-bar-item.ft-bar-item-clickable {
+      border-radius: calc(var(--neo-glass-radius, 20) * 0.6px);
+      transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .ft-bar-item.ft-bar-item-clickable:hover {
+      background-color: var(--neo-glow);
+      box-shadow: 0 0 0 1px var(--neo-glow-ring);
+    }
+
+    .ft-bar-item.ft-bar-item-clickable:active {
+      background-color: var(--neo-glow-ring);
+    }
+
+    .ft-bar-item-badge {
+      box-shadow: 0 0 4px 1px oklch(from var(--slu-std-ui-color) l c h / 0.6);
+    }
+
+    .ft-corner-button {
+      border-radius: 6px;
+    }
+
+  "@seelen/tooltip": &popover-glass |
+    .slu-std-popover,
+    .slu-std-surface,
+    .tooltip,
+    .context-menu,
+    .notification,
+    .flyout {
+      background-color: rgba(20, 20, 20, 0.9) !important;
+      background-color: oklch(from var(--slu-std-bg-color) l c h / calc(var(--neo-glass-popover-opacity, 90) / 100)) !important;
+      background-image: linear-gradient(135deg, oklch(from var(--slu-std-fg-color) l c h / 0.10) 0%, transparent 40%) !important;
+      backdrop-filter: blur(var(--neo-glass-popover-blur, 46px)) saturate(2.4) !important;
+      -webkit-backdrop-filter: blur(var(--neo-glass-popover-blur, 46px)) saturate(2.4) !important;
+      border: 1px solid oklch(from var(--slu-std-fg-color) l c h / calc(var(--neo-glass-border-opacity, 16) / 100)) !important;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), inset 0 1px 0 oklch(from var(--slu-std-fg-color) l c h / 0.12) !important;
+    }
+
+    .slu-std-popover,
+    .slu-std-surface {
+      border-radius: calc(var(--neo-glass-radius, 20) * 1px) !important;
+    }
+
+    .slu-std-popover *,
+    .slu-std-surface *,
+    .tooltip *,
+    .context-menu *,
+    .notification *,
+    .flyout * {
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+    }
+
+  "@seelen/context-menu": *popover-glass
+  "@seelen/notifications": *popover-glass
+  "@seelen/quick-settings": *popover-glass
+  "@seelen/power-menu": *popover-glass
+  "@seelen/bluetooth-popup": *popover-glass
+  "@seelen/network-popup": *popover-glass
+  "@seelen/calendar-popup": *popover-glass
+  "@seelen/apps-menu": *popover-glass
+  "@seelen/user-menu": *popover-glass
+  "@seelen/system-tray": *popover-glass
+  "@seelen/workspaces-viewer": *popover-glass
+  "@seelen/keyboard-selector": *popover-glass
+  "@seelen/flyouts": *popover-glass
+
+  "@seelen/media-popup": |
+    .slu-std-popover {
+      background-color: rgba(20, 20, 20, 0.9) !important;
+      background-color: oklch(from var(--slu-std-bg-color) l c h / calc(var(--neo-glass-popover-opacity, 90) / 100)) !important;
+      background-image: linear-gradient(135deg, oklch(from var(--slu-std-fg-color) l c h / 0.10) 0%, transparent 40%) !important;
+      backdrop-filter: blur(var(--neo-glass-popover-blur, 46px)) saturate(2.4) !important;
+      -webkit-backdrop-filter: blur(var(--neo-glass-popover-blur, 46px)) saturate(2.4) !important;
+      border: 1px solid oklch(from var(--slu-std-fg-color) l c h / calc(var(--neo-glass-border-opacity, 16) / 100)) !important;
+      border-radius: calc(var(--neo-glass-radius, 20) * 1px) !important;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), inset 0 1px 0 oklch(from var(--slu-std-fg-color) l c h / 0.12) !important;
+    }
+
+    .media-control-label {
+      display: inline-block;
+      padding: 3px 6px;
+      margin-left: -6px;
+      border-radius: 6px;
+      background-color: rgba(0, 0, 0, 0.65) !important;
+      color: #f5f5f5 !important;
+      text-shadow: none !important;
+    }
+
+    * {
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+    }
