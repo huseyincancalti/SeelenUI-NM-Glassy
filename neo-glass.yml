@@ -3,12 +3,12 @@ id: "@hsync/neo-glass"
 metadata:
   displayName: "Neo Glass"
   description: >-
-    Dock ve araç çubuğu için neo-minimalist glassmorphism teması. "(Neredeyse) Sıvı Cam
-    DockBar" (dock panelinde sıvı-cam/blur/parıltı dili) ile "Onyx Bubbles Light & Dark
-    (Adaptive)" (araç çubuğunda yumuşak, aydınlık/karanlığa uyumlu bubble öğeler) temalarından
-    ilham alınarak sıfırdan yazıldı. Seelen UI v2.7.x'in güncel --slu-std-* tasarım
-    token'larını kullanır; bu sayede Windows vurgu renginize ve açık/koyu moda otomatik uyum
-    sağlar.
+    A neo-minimalist glassmorphism theme for the dock, toolbar, and every popup/flyout
+    panel, written from scratch. Inspired by "(Almost) Liquid Glass DockBar" (the
+    liquid-glass/blur/shine language on the dock) and "Onyx Bubbles Light & Dark
+    (Adaptive)" (the soft, light/dark-aware bubble items on the toolbar). Built on
+    Seelen UI v2.7.x's current --slu-std-* design tokens, so it automatically adapts
+    to your Windows accent color and light/dark system theme.
   tags:
     - dock
     - toolbar
@@ -20,15 +20,15 @@ metadata:
 settings:
   - syntax: <length>
     name: --neo-glass-blur
-    label: "Cam bulanıklığı"
-    description: "Dock, araç çubuğu ve tüm popup panellerinin arka plan bulanıklık miktarı."
+    label: "Glass blur"
+    description: "Background blur amount for the dock, toolbar, and all popup panels."
     initialValue: 22
     initialValueUnit: px
 
   - syntax: <number>
     name: --neo-glass-opacity
-    label: "Cam opaklığı (%)"
-    description: "Panel arka planının saydamlık seviyesi."
+    label: "Glass opacity (%)"
+    description: "Transparency level of the panel background."
     initialValue: 55
     min: 20
     max: 95
@@ -36,7 +36,7 @@ settings:
 
   - syntax: <number>
     name: --neo-glass-radius
-    label: "Köşe yuvarlaklığı (px)"
+    label: "Corner radius (px)"
     initialValue: 20
     min: 8
     max: 32
@@ -44,7 +44,7 @@ settings:
 
   - syntax: <number>
     name: --neo-glass-border-opacity
-    label: "Kenar çizgisi belirginliği (%)"
+    label: "Edge line strength (%)"
     initialValue: 16
     min: 0
     max: 60
@@ -52,15 +52,15 @@ settings:
 
   - syntax: <length>
     name: --neo-glass-popover-blur
-    label: "Panel (yazılı alan) bulanıklığı"
-    description: "Popup/flyout panellerindeki arka plan bulanıklık miktarı."
+    label: "Panel (text area) blur"
+    description: "Background blur amount for popup/flyout panels."
     initialValue: 46
     initialValueUnit: px
 
   - syntax: <number>
     name: --neo-glass-popover-opacity
-    label: "Panel (yazılı alan) opaklığı (%)"
-    description: "Okunurluk her şeyden önce gelir — yüksek tutulur."
+    label: "Panel (text area) opacity (%)"
+    description: "Legibility comes first — kept high."
     initialValue: 90
     min: 40
     max: 98
