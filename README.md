@@ -12,7 +12,7 @@ Built on Seelen UI's current `--slu-std-*` design tokens, so it automatically ad
 
 ## Installation
 
-1. Download [`neo-glass.yml`](neo-glass.yml) (or grab it from the [latest release](../../releases/latest)).
+1. Download from the [latest release](../../releases/latest).
 2. Copy it into:
    ```
    %APPDATA%\com.seelen.seelen-ui\themes\
