@@ -1,27 +1,37 @@
-# Neo Glass — Seelen UI Teması
+# Neo Glass — Seelen UI Theme
 
-Dock, araç çubuğu ve tüm popup/flyout panelleri için sıfırdan yazılmış **neo-minimalist glassmorphism** teması. "(Neredeyse) Sıvı Cam DockBar" (dock'taki sıvı-cam/blur/parıltı dili) ile "Onyx Bubbles Light & Dark (Adaptive)" (araç çubuğundaki yumuşak, açık/koyu moda uyumlu bubble öğeler) temalarından ilham alınarak inşa edildi.
+A **neo-minimalist glassmorphism** theme, written from scratch, for the dock, toolbar, and every popup/flyout panel in Seelen UI. Inspired by "(Almost) Liquid Glass DockBar" (the liquid-glass/blur/shine language on the dock) and "Onyx Bubbles Light & Dark (Adaptive)" (the soft, light/dark-aware bubble items on the toolbar).
 
-Seelen UI'nin güncel `--slu-std-*` tasarım token'larını kullanır — Windows vurgu renginize ve açık/koyu sistem temanıza otomatik uyum sağlar.
+Built on Seelen UI's current `--slu-std-*` design tokens, so it automatically adapts to your Windows accent color and light/dark system theme.
 
-![Masaüstü genel görünüm](media/D%C3%BCz%20masa%C3%BCst%C3%BC%20medyalar%C4%B1/foto%C4%9Fraf/Screenshot%202026-07-15%20112438.png)
+![Desktop overview](media/D%C3%BCz%20masa%C3%BCst%C3%BC%20medyalar%C4%B1/foto%C4%9Fraf/Screenshot%202026-07-15%20112438.png)
 
-## Öne çıkanlar
+## Installation
 
-- **Segmented toolbar** — araç çubuğu tek parça bir bar yerine sol/orta/sağ olmak üzere bağımsız yüzen cam parçalara ayrılır (profil/uygulamalar solda, sistem tepsisi sağda)
-- **Sıvı cam dock** — bulanıklık, parıltı ve kenar yansıması ayarlanabilir yüzen dock
-- **Okunaklı popup'lar** — hızlı ayarlar, medya kontrolü, bildirimler, bağlam menüleri dahil 17 farklı widget'ta tutarlı cam efekti; arka planda ne olursa olsun (karmaşık görsel, yoğun metin) metin okunurluğu korunur
-- **6 canlı ayarlanabilir değişken** — bulanıklık, opaklık, köşe yuvarlaklığı ve kenar belirginliğini uygulamayı yeniden başlatmadan Seelen UI ayarları içinden değiştirebilirsiniz
+1. Download [`neo-glass.yml`](neo-glass.yml) (or grab it from the [latest release](../../releases/latest)).
+2. Copy it into:
+   ```
+   %APPDATA%\com.seelen.seelen-ui\themes\
+   ```
+3. Open Seelen UI → **Settings → Resources → Themes**, find **Neo Glass** and enable it.
+4. Fully quit Seelen UI (exit from the system tray) and reopen it.
 
-## Ekran görüntüleri
+## Highlights
 
-### Widget'lar
+- **Segmented toolbar** — instead of one continuous bar, the toolbar splits into independent floating glass islands (left: profile/apps, right: system tray)
+- **Liquid glass dock** — floating dock with adjustable blur, glow, and edge highlight
+- **Readable popups** — consistent glass effect across 17 widgets (quick settings, media controls, notifications, context menus, and more); text stays legible no matter what's behind the panel (busy wallpaper, dense text, etc.)
+- **6 live-tunable variables** — adjust blur, opacity, corner radius, and border strength straight from Seelen UI's settings, no restart needed
 
-| Medya paneli | Wi-Fi paneli |
+## Screenshots
+
+### Widgets
+
+| Media panel | Wi-Fi panel |
 |---|---|
-| ![Medya paneli](media/widget%20medyalar%C4%B1/Screenshot%202026-07-15%20141016.png) | ![Wi-Fi paneli](media/widget%20medyalar%C4%B1/Screenshot%202026-07-15%20141053.png) |
+| ![Media panel](media/widget%20medyalar%C4%B1/Screenshot%202026-07-15%20141016.png) | ![Wi-Fi panel](media/widget%20medyalar%C4%B1/Screenshot%202026-07-15%20141053.png) |
 
-### Canlı önizlemeler
+### Live previews
 
 <p>
   <img src="media/D%C3%BCz%20masa%C3%BCst%C3%BC%20medyalar%C4%B1/gif/Recording%202026-07-15%20134821.gif" width="49%" />
@@ -36,34 +46,24 @@ Seelen UI'nin güncel `--slu-std-*` tasarım token'larını kullanır — Window
   <img src="media/D%C3%BCz%20masa%C3%BCst%C3%BC%20medyalar%C4%B1/gif/Recording%202026-07-15%20135715.gif" width="49%" />
 </p>
 
-## Kurulum
+## Customization
 
-1. [`neo-glass.yml`](neo-glass.yml) dosyasını indirin.
-2. Şu klasöre kopyalayın:
-   ```
-   %APPDATA%\com.seelen.seelen-ui\themes\
-   ```
-3. Seelen UI'yi açın → **Ayarlar → Kaynaklar → Temalar**'a gidin, **Neo Glass**'ı bulup etkinleştirin.
-4. Seelen UI'yi tamamen kapatıp (sistem tepsisinden çıkış) tekrar açın.
+Once enabled, these variables can be tuned live from the theme's settings page:
 
-## Özelleştirme
-
-Etkinleştirdikten sonra tema ayarları sayfasından şu değişkenleri canlı olarak ayarlayabilirsiniz:
-
-| Değişken | Ne işe yarar | Varsayılan |
+| Variable | What it controls | Default |
 |---|---|---|
-| `--neo-glass-blur` | Dock ve araç çubuğunun arka plan bulanıklığı | 22px |
-| `--neo-glass-opacity` | Dock/araç çubuğu cam opaklığı | %55 |
-| `--neo-glass-radius` | Köşe yuvarlaklığı | 20px |
-| `--neo-glass-border-opacity` | Kenar çizgisi belirginliği | %16 |
-| `--neo-glass-popover-blur` | Popup panellerinin bulanıklığı | 46px |
-| `--neo-glass-popover-opacity` | Popup panellerinin opaklığı (okunurluk için yüksek tutulur) | %90 |
+| `--neo-glass-blur` | Background blur of the dock and toolbar | 22px |
+| `--neo-glass-opacity` | Dock/toolbar glass opacity | 55% |
+| `--neo-glass-radius` | Corner radius | 20px |
+| `--neo-glass-border-opacity` | Edge line strength | 16% |
+| `--neo-glass-popover-blur` | Blur of popup panels | 46px |
+| `--neo-glass-popover-opacity` | Popup panel opacity (kept high for legibility) | 90% |
 
-## Uyumluluk
+## Compatibility
 
 - Seelen UI v2.7.x
-- Test edilen widget'lar: `weg`, `fancy-toolbar`, `tooltip`, `context-menu`, `notifications`, `quick-settings`, `power-menu`, `bluetooth-popup`, `network-popup`, `calendar-popup`, `apps-menu`, `user-menu`, `system-tray`, `workspaces-viewer`, `keyboard-selector`, `flyouts`, `media-popup`
+- Tested widgets: `weg`, `fancy-toolbar`, `tooltip`, `context-menu`, `notifications`, `quick-settings`, `power-menu`, `bluetooth-popup`, `network-popup`, `calendar-popup`, `apps-menu`, `user-menu`, `system-tray`, `workspaces-viewer`, `keyboard-selector`, `flyouts`, `media-popup`
 
-## Teşekkür
+## Credits
 
-İlham alınan temalar: **(Neredeyse) Sıvı Cam DockBar** (@silva2307) ve **Onyx Bubbles Light & Dark (Adaptive)** (@nevermore).
+Inspired by **(Almost) Liquid Glass DockBar** (@silva2307) and **Onyx Bubbles Light & Dark (Adaptive)** (@nevermore).
