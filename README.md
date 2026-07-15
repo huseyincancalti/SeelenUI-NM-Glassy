@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="logo.png" width="140" alt="Neo Glass logo" />
+</p>
+
 # Neo Glass — Seelen UI Theme
 
 A **neo-minimalist glassmorphism** theme, written from scratch, for the dock, toolbar, and every popup/flyout panel in Seelen UI. Inspired by "(Almost) Liquid Glass DockBar" (the liquid-glass/blur/shine language on the dock) and "Onyx Bubbles Light & Dark (Adaptive)" (the soft, light/dark-aware bubble items on the toolbar).
@@ -34,7 +38,10 @@ Built on Seelen UI's current `--slu-std-*` design tokens, so it automatically ad
 ### Live previews
 
 <p>
+  <img src="media/D%C3%BCz%20masa%C3%BCst%C3%BC%20medyalar%C4%B1/gif/Recording%202026-07-15%20134747.gif" width="49%" />
   <img src="media/D%C3%BCz%20masa%C3%BCst%C3%BC%20medyalar%C4%B1/gif/Recording%202026-07-15%20134821.gif" width="49%" />
+</p>
+<p>
   <img src="media/D%C3%BCz%20masa%C3%BCst%C3%BC%20medyalar%C4%B1/gif/Recording%202026-07-15%20135005.gif" width="49%" />
 </p>
 <p>
